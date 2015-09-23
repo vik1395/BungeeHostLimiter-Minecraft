@@ -1,0 +1,19 @@
+#--- BungeeHostLimiter Config File ---#
+
+Default Host Names:
+    - play.legitplay.net
+    - mc.legitplay.net
+# Enter a list of default host names players can use to log in to your server.
+
+Custom Host Names:
+    md_5: md5.legitplay.net
+    Vik1395: Vik1395.legitplay.net
+# Enter a list of players and their custom Wildcard Hosts. 
+# These players can only login to the server using the given host name.
+
+Default Kick Message: 'You have not entered using a valid IP. Please use one of the following IPs to enter this Server: %list%'
+# Enter the kick message shown to default players that log in through an IP not
+# listed in the Default Host Names. Use %list% to show the list of IPs they can use.
+
+Custom Kick Message: 'You have not entered using a valid host key!'
+# Enter the kick message shown to players who dont join with their custom key.
