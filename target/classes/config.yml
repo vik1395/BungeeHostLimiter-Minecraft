@@ -4,6 +4,7 @@ Default Host Names:
     - play.legitplay.net
     - mc.legitplay.net
 # Enter a list of default host names players can use to log in to your server.
+# Leave this empty if you want to only use custom host names.
 
 Custom Host Names:
     md_5: md5.legitplay.net
