@@ -16,8 +16,6 @@ import net.md_5.bungee.config.Configuration;
 Author: Vik1395
 Project: BungeeHostLimiter
 
-Copyright 2015
-
 Licensed under Creative CommonsAttribution-NonCommercial-ShareAlike 4.0 International Public License (the "License");
 You may not use this file except in compliance with the License.
 
