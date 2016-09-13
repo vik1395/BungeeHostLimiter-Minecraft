@@ -22,43 +22,56 @@ public class ListenerClass implements Listener
 {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onLogin(PreLoginEvent ple)
-	  {
-	    String pname = ple.getConnection().getName();
+	{
+		String pname;
+		
+	    if(Main.uuid)
+	    {
+	    	pname = ple.getConnection().getUniqueId().toString();
+		    
+	    }
+	    else
+	    {
+	    	pname = ple.getConnection().getName();
+	    }
+	    
 	    String connip = ple.getConnection().getVirtualHost().getHostName();
 	    if (Main.custom.getKeys().contains(pname))
 	    {
-	      String cusip = Main.custom.getString(pname);
-	      if (!connip.equals(cusip))
-	      {
-	        ple.setCancelReason(Main.customkick);
-	        ple.setCancelled(true);
-	      }
-	      return;
+	    	String cusip = Main.custom.getString(pname);
+		    if (!connip.equals(cusip))
+		    {
+		    	ple.setCancelReason(Main.customkick);
+		        ple.setCancelled(true);
+		    }
+		    return;
 	    }
 	    boolean islegal = false;
 	    if ((Main.def == null) || (Main.def.size() < 1) || (Main.def.isEmpty()))
 	    {
-	      ple.setCancelReason(Main.customkick);
-	      ple.setCancelled(true);
-	      return;
+	    	ple.setCancelReason(Main.customkick);
+	        ple.setCancelled(true);
+	        return;
 	    }
-	    for (int i = 0; i < Main.def.size(); i++) {
-	      if (connip.equalsIgnoreCase((String)Main.def.get(i)))
-	      {
-	        islegal = true;
-	        break;
-	      }
+	    for (int i = 0; i < Main.def.size(); i++) 
+	    {
+	    	if (connip.equalsIgnoreCase((String)Main.def.get(i)))
+	        {
+	    		islegal = true;
+	    		break;
+	        }
 	    }
 	    if (!islegal)
 	    {
-	      String iplist = "\n";
-	      for (String defip : Main.def) {
-	        iplist = iplist + "- " + defip + "\n";
-	      }
-	      ple.setCancelReason(Main.defaultkick.replace("%list%", iplist));
-	      ple.setCancelled(true);
-	      return;
+		     String iplist = "\n";
+		     for (String defip : Main.def) 
+		     {
+		    	 iplist = iplist + "- " + defip + "\n";
+		     }
+		     ple.setCancelReason(Main.defaultkick.replace("%list%", iplist));
+		     ple.setCancelled(true);
+		     return;
 	    }
-	  }
 	}
+}
 

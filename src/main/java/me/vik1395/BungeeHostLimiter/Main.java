@@ -1,11 +1,10 @@
 package me.vik1395.BungeeHostLimiter;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 import net.md_5.bungee.api.plugin.Plugin;
@@ -31,6 +30,7 @@ public class Main extends Plugin
 	  public static Configuration custom;
 	  public static String customkick;
 	  public static String defaultkick;
+	  public static boolean uuid;
 	  
 	  public void onEnable()
 	  {
@@ -46,12 +46,16 @@ public class Main extends Plugin
 			  {
 			    if ((sender instanceof ProxiedPlayer))
 			    {
-			      if (((ProxiedPlayer)sender).hasPermission("bungeehostlimiter.reload")) {}
+			      if (((ProxiedPlayer)sender).hasPermission("bungeehostlimiter.reload")) 
+			      {
+			    	  loadConfig();
+			    	  sender.sendMessage(new TextComponent(ChatColor.GREEN + "[BungeeHostLimiter] Config has been reloaded"));
+			      }
 			    }
 			    else
 			    {
 			      loadConfig();
-			      getProxy().getLogger().info("[BungeeHostLimiter]" + ChatColor.GREEN + "Config has been reloaded");
+			      getProxy().getLogger().info("[BungeeHostLimiter]" + ChatColor.GREEN + " Config has been reloaded");
 			    }
 			  }
 	    	
@@ -66,5 +70,6 @@ public class Main extends Plugin
 	    custom = (Configuration)YamlManager.config.get("Custom Host Names");
 	    customkick = YamlManager.config.getString("Custom Kick Message");
 	    defaultkick = YamlManager.config.getString("Default Kick Message");
+	    uuid = YamlManager.config.getBoolean("Enable UUID Mode");
 	  }
 	}

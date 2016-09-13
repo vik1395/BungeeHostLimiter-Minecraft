@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>me.vik1395</groupId>
   <artifactId>BungeeHostLimiter</artifactId>
-  <version>1.1</version>
+  <version>1.2</version>
   <name>BungeeHostLimiter</name>
   <description>A wildcard host plugin for Bungee servers.</description>
   
